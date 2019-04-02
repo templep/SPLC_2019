@@ -1,0 +1,57 @@
+
+Time taken to build model: 0.31 seconds
+Time taken to test model on training data: 0.02 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         520               99.0476 %
+Incorrectly Classified Instances         5                0.9524 %
+Kappa statistic                          0.9613
+Mean absolute error                      0.0188
+Root mean squared error                  0.097 
+Relative absolute error                  7.4107 %
+Root relative squared error             27.2727 %
+Total Number of Instances              525     
+
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.064    0.989      1.000    0.994      0.962    0.971     0.990     0
+                 0.936    0.000    1.000      0.936    0.967      0.962    0.971     0.946     1
+Weighted Avg.    0.990    0.055    0.991      0.990    0.990      0.962    0.971     0.983     
+
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 447   0 |   a = 0
+   5  73 |   b = 1
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        3853               96.1567 %
+Incorrectly Classified Instances       154                3.8433 %
+Kappa statistic                          0.7621
+Mean absolute error                      0.0484
+Root mean squared error                  0.1957
+Relative absolute error                 22.5425 %
+Root relative squared error             66.2838 %
+Total Number of Instances             4007     
+
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.983    0.249    0.975      0.983    0.979      0.763    0.814     0.965     0
+                 0.751    0.017    0.818      0.751    0.783      0.763    0.814     0.637     1
+Weighted Avg.    0.962    0.227    0.960      0.962    0.961      0.763    0.814     0.935     
+
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3575   62 |    a = 0
+   92  278 |    b = 1
+
