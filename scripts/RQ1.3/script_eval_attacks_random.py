@@ -12,13 +12,15 @@ import random
 
 
 ## load previously trained ML model (SVM linear)
-filename = "../../data/model_classif.txt"
+#filename = "../data/model_classif.txt"
+filename = "../data/model_classif_balanced.txt"
 clf = joblib.load(filename)
 clf.max_iter=1000000000
 
 
 ### load data and labels to clone and create adversarial example
-data_full = np.loadtxt('../../data/train_format_weka_with_few_non-accept.csv',delimiter=',',skiprows=1)
+#data_full = np.loadtxt('../data/train_format_weka_with_few_non-accept.csv',delimiter=',',skiprows=1)
+data_full = np.loadtxt('../data/augmented_train_data_format_weka.csv',delimiter=',',skiprows=1)
 
 
 nb_init_pts=1
@@ -36,8 +38,8 @@ nb_f_total = (data_full[1].size)-1
 #print "nb feat:"+str(nb_f_total)
 
 ##class from which attack starts
-label = 0
-#label = 1
+#label = 0
+label = 1
 
 ##absolute importance feature
 g = clf.coef_
@@ -165,16 +167,20 @@ for stp in step:
             value = np.append(value,label)
 
         if label == 0:
-            np.savetxt("../../results/config_pt/random_attack_norm/non_acc/data_test_training_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+"_nonacc.csv",data,delimiter=',')
+            #np.savetxt("../result_perf_100_runs/all_config_pt/random_attack_norm/data_test_training_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+"_nonacc.csv",data,delimiter=',')
+            np.savetxt("../result_perf_100_runs/all_config_pt/random_attack_norm/balanced_data_test_training_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+"_nonacc.csv",data,delimiter=',')
         else:
-            np.savetxt("../../results/config_pt/random_attack_norm/acc/data_test_training_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+".csv",data,delimiter=',')
+            #np.savetxt("../result_perf_100_runs/all_config_pt/random_attack_norm/data_test_training_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+".csv",data,delimiter=',')
+            np.savetxt("../result_perf_100_runs/all_config_pt/random_attack_norm/balanced_data_test_training_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+".csv",data,delimiter=',')
         nb_iter +=1
     if label == 0:
-        out_filename="perf_prediction_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+"_nonacc.txt"
-        f=open("../../results/4000_gen_adv_config/perf_predict_random_attack_nonacc_norm/"+out_filename,"w")
+        #out_filename="perf_prediction_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+"_nonacc.txt"
+        out_filename="balanced_perf_prediction_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+"_nonacc.txt"
+        f=open("../result_perf_100_runs/perf_predict_random_attack_nonacc_norm/"+out_filename,"w")
     else:
-        out_filename="perf_prediction_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+".txt"
-        f=open("../../results/4000_gen_adv_config/perf_predict_random_attack_norm/"+out_filename,"w")
+        #out_filename="perf_prediction_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+".txt"
+        out_filename="balanced_perf_prediction_4000_random_config_step_"+str(stp)+"_nb_displacement_"+str(max_disp)+".txt"
+        f=open("../result_perf_100_runs/perf_predict_random_attack_norm/"+out_filename,"w")
     orig_stdout = sys.stdout
     sys.stdout = f
 
